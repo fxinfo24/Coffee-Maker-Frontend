@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2'
+
 const AddCoffee = () => {
   const AddCoffeeHandler = (event) => {
     event.preventDefault();
@@ -26,6 +28,14 @@ const AddCoffee = () => {
     .then(res => res.json())
     .then(data =>{
         console.log(data); //
+        if(data.insertedID){ // Using Sweet alert after install npm i sweetalert2
+            Swal.fire({
+                title: 'Success!',
+                text: 'Coffee added successfully',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+              })
+        }
     })
   };
 
