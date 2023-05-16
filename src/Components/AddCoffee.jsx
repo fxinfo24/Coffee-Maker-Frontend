@@ -19,7 +19,7 @@ const AddCoffee = () => {
     const newCoffee = { name, chef, supplier, taste, category, details, photo, quantity };
     console.log(newCoffee); // Required data from client side / UI
 
-    // Now we've to send these data to the backend-server
+    // Now we've to send these data (POST) to the backend-server
     fetch('http://localhost:5009/coffee', {
         method: 'POST',
         headers: {'content-type': 'application/json'},
@@ -28,7 +28,8 @@ const AddCoffee = () => {
     .then(res => res.json())
     .then(data =>{
         console.log(data); //
-        if(data.insertedID){ // Using Sweet alert after install npm i sweetalert2
+        // Using Sweet alert after install npm i sweetalert2
+        if(data.insertedId){ 
             Swal.fire({
                 title: 'Success!',
                 text: 'Coffee added successfully',
@@ -42,7 +43,7 @@ const AddCoffee = () => {
 
   return (
     <div className=" text-center bg-[#f4f3f0] p-24">
-      <h2 className="text-3xl font-extrabold">Add a Coffee</h2>
+      <h2 className="text-3xl font-extrabold">Add New Coffee</h2>
       <p>
         It is a long established fact that a reader will be distraceted by the
         readable content of a page when looking at its layout. The point of
