@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { FaEdit, FaEye, FaTrash } from 'react-icons/fa';
 
 const CoffeeCard = ({ coffee }) => {
   const {
@@ -51,14 +52,15 @@ const CoffeeCard = ({ coffee }) => {
         <div className="pl-5 my-auto">
           <h2 className="card-title">Name: {name}</h2>
           <p>Chef: {chef}</p>
-          <p>{quantity}</p>
+          <p>Taste: {taste}</p>
+          <p>Quantity: {quantity}</p>
         </div>
         <div className="card-actions justify-end my-auto">
           <div className="btn-group btn-group-vertical space-y-4">
-            <button className="btn">View</button>
-            <Link to = {`updateCoffee/${_id}`}><button className="btn">Edit</button></Link>
+            <button className="btn"><FaEye></FaEye></button>
+            <Link to = {`updateCoffee/${_id}`}><button className="btn"><FaEdit></FaEdit></button></Link>
             <button onClick={() => handleDelete(_id)} className="btn">
-              X
+            <FaTrash></FaTrash>
             </button>
           </div>
         </div>
