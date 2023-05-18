@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="m-20">
       <h1 className="text-4xl text-violet-500 text-center my-14">
-        Mongo Coffee Store has {coffees.length} Coffees
+        Mongo CRUD Coffee Store has {coffees.length} Coffees
       </h1>
       <div className="grid md:grid-cols-2 gap-5">
         {coffees.map((coffee) => (

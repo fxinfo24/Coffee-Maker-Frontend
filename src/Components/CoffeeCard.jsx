@@ -9,15 +9,16 @@ const CoffeeCard = ({ coffee }) => {
     chef,
     supplier,
     taste,
-    category,
-    details,
+    // category,
+    // details,
     photo,
     quantity,
   } = coffee;
 
   const handleDelete = (_id) => {
     console.log(_id);
-    //
+
+    // Display a confirmation dialog using SweetAlert
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -28,21 +29,22 @@ const CoffeeCard = ({ coffee }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        // Swal.fire("Deleted!", "Your file has been deleted.", "success");
-
+        // Send a DELETE request to the server
         fetch(`http://localhost:5009/coffee/${_id}`, {
-            method: "DELETE"
+          method: "DELETE"
         })
         .then((response) => response.json())
         .then(data => {
-            console.log(data);
-            if (data.deletedCount > 0) {
-                Swal.fire("Deleted!", "Your Coffee has been deleted.", "success");
-            }
+          console.log(data);
+          if (data.deletedCount > 0) {
+            // Display a success message using SweetAlert
+            Swal.fire("Deleted!", "Your Coffee has been deleted.", "success");
+          }
         })
       }
     });
   };
+
   return (
     <div className="card card-side bg-base-100 shadow-xl">
       <figure>
@@ -54,13 +56,14 @@ const CoffeeCard = ({ coffee }) => {
           <p>Chef: {chef}</p>
           <p>Taste: {taste}</p>
           <p>Quantity: {quantity}</p>
+          <p>Supplier: {supplier}</p>
         </div>
         <div className="card-actions justify-end my-auto">
           <div className="btn-group btn-group-vertical space-y-4">
             <button className="btn"><FaEye></FaEye></button>
-            <Link to = {`updateCoffee/${_id}`}><button className="btn"><FaEdit></FaEdit></button></Link>
+            <Link to={`updateCoffee/${_id}`}><button className="btn"><FaEdit></FaEdit></button></Link>
             <button onClick={() => handleDelete(_id)} className="btn">
-            <FaTrash></FaTrash>
+              <FaTrash></FaTrash>
             </button>
           </div>
         </div>
